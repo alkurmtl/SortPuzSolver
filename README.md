@@ -1,6 +1,8 @@
 
 Solver for [SortPuz mobile game](https://play.google.com/store/apps/details?id=sortpuz.water.sort.puzzle.game&hl=ru&gl=US), written in C++.     
 
+Right now algorithm is naive bruteforce, i will improve it later.
+
 To run it, compile the ``main.cpp`` file youself or ask your some programmer you know to do it. Then run the compiled binary and use your game field as input in terminal. You can deduce it's format from the following picture and example, color can be named as you want.  
 
 <img src="https://i.imgur.com/w6QmYit.jpg" alt="drawing" width="300"/>                                                  
