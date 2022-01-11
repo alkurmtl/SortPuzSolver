@@ -2,7 +2,9 @@
 Solver for [SortPuz mobile game](https://play.google.com/store/apps/details?id=sortpuz.water.sort.puzzle.game&hl=ru&gl=US), written in C++.     
 
 To run it, compile the ``main.cpp`` file youself or ask your some programmer you know to do it. Then run the compiled binary and use your game field as input in terminal. You can deduce it's format from the following picture and example, color can be named as you want.  
- <img src="https://i.imgur.com/w6QmYit.jpg" alt="drawing" width="300"/>                                                  
+
+<img src="https://i.imgur.com/w6QmYit.jpg" alt="drawing" width="300"/>                                                  
+
 Corresponing input (where 7 is number of bottles): 
 `````
 7
@@ -28,7 +30,9 @@ end
 `````
 
 Output will be a lots of spam for tracking progress and then a sequence of lines in "from which bottle to which bottle". Bottles are numbered as follows:
- <img src="https://i.imgur.com/BM52qqO.jpg" alt="drawing" width="300"/>         
+ 
+<img src="https://i.imgur.com/BM52qqO.jpg" alt="drawing" width="300"/>         
+
 For example, the output for configuration higher will be
 1 7
 4 1
