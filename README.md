@@ -3,7 +3,7 @@ Solver for [SortPuz mobile game](https://play.google.com/store/apps/details?id=s
 
 Right now algorithm is naive bruteforce, i will improve it later.
 
-To run it, compile the ``main.cpp`` file youself or ask your some programmer you know to do it. Then run the compiled binary and use your game field as input in terminal. You can deduce it's format from the following picture and example, color can be named as you want.  
+To run it, compile the ``main.cpp`` file youself or ask some programmer you know to do it. Then run the compiled binary and use your game field as input in terminal. You can deduce it's format from the following picture and example, color can be named as you want.  
 
 <img src="https://i.imgur.com/w6QmYit.jpg" alt="drawing" width="300"/>                                                  
 
@@ -13,7 +13,7 @@ Corresponing input (where 7 is number of bottles):
 blue yellow yellow pink end
 blue violet violet end
 pink blue end
-violet pink pink yellow
+violet pink pink yellow end
 yellow orange violet blue end
 orange orange orange end
 end
@@ -25,7 +25,7 @@ You can name colors arbitrarily, e.g. the following for the same picture should 
 a b b c end
 a b b end
 c a end
-b c c b
+b c c b end
 b d b a end
 d d d end
 end
