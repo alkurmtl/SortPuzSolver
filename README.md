@@ -1,7 +1,7 @@
 
 Solver for [SortPuz mobile game](https://play.google.com/store/apps/details?id=sortpuz.water.sort.puzzle.game&hl=ru&gl=US), written in C++.     
 
-Algorithm is optimized bruteforce, which uses cost function to analyze which states are more likely to lead to an answer, and bruteforce visits them in the first place..
+Algorithm is optimized bruteforce, which uses cost function to analyze which states are more likely to lead to an answer and visits them in the first place.
 
 To run it, compile the ``main.cpp`` file youself or ask some programmer you know to do it. Then run the compiled binary and use your game field as input in terminal. You can deduce it's format from the following picture and example, color can be named as you want.  
 
