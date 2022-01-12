@@ -1,9 +1,4 @@
-﻿#include <vector>
-#include <string>
-#include <set>
-#include <map>
-#include <iostream>
-#include <unordered_set>
+#include <bits/stdc++.h>
 #define int long long
 
 using namespace std;
@@ -32,14 +27,26 @@ int hashed(const vector<vector<int>>& state) {
 unordered_set<int> used;
 vector<pair<int, int>> path;
 
-bool ok_for_transit(const vector<int>& bottle) {
+int cost(const vector<vector<int>>& state) { // cost function for bruteforce
+    int res = 0;
+    for (int i = 0; i < state.size(); ++i) {
+        for (int j = 1; j < state[i].size(); ++j) {
+            if (state[i][j] == state[i][j - 1]) {
+                ++res;
+            }
+        }
+    }
+    return res;
+}
+
+bool ok_for_transit(const vector<int>& bottle) { // check if we can move from bottle
     for (int i = 1; i < bottle.size(); ++i) {
         if (bottle[i] != bottle[0]) return true;
     }
     return bottle.size() < MAX_HEIGHT;
 }
 
-int make_transition(vector<int>& from, vector<int>& to, bool modify) {
+int make_transition(vector<int>& from, vector<int>& to, bool modify) { // returns how much liquid was moved
     int cnt = 0;
     vector<int> from_copy = from;
     vector<int> to_copy = to;
@@ -56,7 +63,7 @@ int make_transition(vector<int>& from, vector<int>& to, bool modify) {
     return cnt;
 }
 
-void transit_cnt(vector<int>& from, vector<int>& to, int cnt) {
+void transit_cnt(vector<int>& from, vector<int>& to, int cnt) { // moved cnt liquid from from to to
     for (int i = 0; i < cnt; ++i) {
         int x = from.back();
         from.pop_back();
@@ -64,7 +71,7 @@ void transit_cnt(vector<int>& from, vector<int>& to, int cnt) {
     }
 }
 
-bool check_win(const vector<vector<int>>& state) {
+bool check_win(const vector<vector<int>>& state) { // check if state is a win
     for (int i = 0; i < state.size(); ++i) {
         for (int x : state[i]) {
             if (x != state[i][0]) return false;
@@ -79,12 +86,15 @@ bool check_win(const vector<vector<int>>& state) {
     return true;
 }
 
-bool go(vector<vector<int>>& state) {
+int best_cost = -1;
+
+bool go(vector<vector<int>>& state) { // bruteforce main routine
     int hashed_state = hashed(state);
     if (used.count(hashed(state)) != 0) return false;
+    best_cost = max(best_cost, cost(state));
     used.insert(hashed_state);
     if (used.size() % 1000 == 0) {
-        cout << "Processed " << used.size() << " states, still searching..." << endl;
+        cout << "Processed " << used.size() << " states, still searching, best state cost so far: " << best_cost << endl;
     }
     if (hashed_state == 111267834) {
         int kek = 0;
@@ -93,20 +103,31 @@ bool go(vector<vector<int>>& state) {
     if (win) {
         return true;
     }
+    vector<pair<int, pair<int, int>>> to;
     for (int i = 0; i < state.size(); ++i) {
         for (int j = 0; j < state.size(); ++j) {
             if (i == j || !ok_for_transit(state[i])) continue;
             if (make_transition(state[i], state[j], false) > 0) {
                 int moved = make_transition(state[i], state[j], true);
-                path.emplace_back(i, j);
-                bool win = go(state);
-                if (win) {
-                    return true;
-                }
+                int cur_cost = cost(state);
+                to.push_back({cur_cost, {i, j}});
                 transit_cnt(state[j], state[i], moved);
-                path.pop_back();
             }
         }
+    }
+    sort(to.begin(), to.end());
+    reverse(to.begin(), to.end());
+    for (int k = 0; k < to.size(); ++k) {
+        int i = to[k].second.first;
+        int j = to[k].second.second;
+        int moved = make_transition(state[i], state[j], true);
+        path.emplace_back(i, j);
+        win = go(state);
+        if (win) {
+            return true;
+        }
+        transit_cnt(state[j], state[i], moved);
+        path.pop_back();
     }
     return false;
 }
