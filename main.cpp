@@ -1,5 +1,3 @@
-#include <bits/stdc++.h>
-#define int long long
 
 using namespace std;
 
@@ -95,9 +93,6 @@ bool go(vector<vector<int>>& state) { // bruteforce main routine
     used.insert(hashed_state);
     if (used.size() % 1000 == 0) {
         cout << "Processed " << used.size() << " states, still searching, best state cost so far: " << best_cost << endl;
-    }
-    if (hashed_state == 111267834) {
-        int kek = 0;
     }
     bool win = check_win(state);
     if (win) {
