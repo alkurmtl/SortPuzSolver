@@ -13,7 +13,7 @@ Corresponing input (where 7 is number of bottles):
 blue yellow yellow pink end
 blue violet violet end
 pink blue end
-violet pink pink yellow
+violet pink pink yellow end
 yellow orange violet blue end
 orange orange orange end
 end
@@ -25,7 +25,7 @@ You can name colors arbitrarily, e.g. the following for the same picture should 
 a b b c end
 a b b end
 c a end
-b c c b
+b c c b end
 b d b a end
 d d d end
 end
